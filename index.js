@@ -302,21 +302,8 @@ export async function create ({
   swarmOpts = DEFAULT_SWARM_OPTS,
   ...opts
 } = {}) {
-  const isStringStorage = typeof storage === 'string'
-  const isPathStorage = isStringStorage && (
-    storage.startsWith('.') ||
-     storage.startsWith('/') ||
-     storage.startsWith('\\')
-  )
 
-  let storageBackend = storage
-  if (isStringStorage && !isPathStorage) {
-    storageBackend = RAA(storage)
-  } else if (storage === false) {
-    storageBackend = RAM
-  }
-
-  const corestore = opts.corestore || new CoreStore(storageBackend, { ...corestoreOpts })
+  const corestore = opts.corestore || new CoreStore(storage, { ...corestoreOpts })
 
   const networkKeypair = await corestore.createKeyPair('noise')
 
