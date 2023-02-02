@@ -6,8 +6,6 @@ import Hyperbee from 'hyperbee'
 import crypto from 'hypercore-crypto'
 import z32 from 'z32'
 import b4a from 'b4a'
-import RAA from 'random-access-application'
-import RAM from 'random-access-memory'
 import { query, wellknown } from 'dns-query'
 import { EventEmitter } from 'events'
 
